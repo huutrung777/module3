@@ -1,4 +1,4 @@
-create database m3_c0525l1;
+create database if not exists  m3_c0525l1;
 use m3_c0525l1;
 -- tạo bảng
 create table students(

@@ -41,9 +41,7 @@ values
 ('Tran Thi Hoa', '1985-08-23', 'Vietnam'),
 ('John Smith', '1978-11-30', 'USA'),
 ('Sakura Tanaka', '1990-03-14', 'Japan');
-select * from students;
-select * from class;
-select * from teacher;
+
 -- Hiển thị tất cả các sinh viên có tên bắt đầu bảng ký tự ‘h’
 select * from students where name like 'H%';
 -- Hiển thị các thông tin lớp học có thời gian bắt đầu vào tháng 12
@@ -61,6 +59,9 @@ value
 ('Văn', 5),
 ('Tin học', 6),
 ('Anh văn', 3);
+select * from students;
+select * from class;
+select * from teacher;
 -- Hiển thị tất cả các thông tin môn học có credit trong khoảng từ 3-5.
 select * from subject 
 where credit >= 3 and credit <= 5;

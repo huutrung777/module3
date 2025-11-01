@@ -1,0 +1,5 @@
+id_students,name,age,gender,email,score,class_id
+1,Huy,12,1,huy@gmail.com,8.5,2
+2,Lan,13,0,lan@gmail.com,9.2,2
+3,Minh,14,1,minh@gmail.com,7.8,3
+4,Trang,15,0,trang@gmail.com,9,4

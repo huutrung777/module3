@@ -61,6 +61,24 @@ value
 ('Văn', 5),
 ('Tin học', 6),
 ('Anh văn', 3);
+create table mark (
+    id_mark int primary key auto_increment,
+    id_students int,
+    id_subject int,
+    score float,
+    foreign key (id_students) references students(id_students),
+    foreign key (id_subject) references subject(id_subject)
+);
+-- Thêm dữ liệu mẫu
+insert into mark (id_students, id_subject, score)
+values
+(1, 1, 8.5),
+(1, 2, 9.0),
+(2, 3, 9.5),
+(2, 4, 9.8),
+(3, 5, 7.8),
+(4, 6, 8.9);
+
 -- Hiển thị tất cả các thông tin môn học có credit trong khoảng từ 3-5.
 select * from subject 
 where credit >= 3 and credit <= 5;
@@ -72,6 +90,21 @@ update students set class_id = 2 where id_students = 1;
 select * from students; 
 -- Hiển thị các thông tin: id,name,score. Dữ liệu sắp xếp theo điểm thi (score) giảm dần. nếu trùng sắp theo tên tăng dần.
 select* from students order by score desc, name asc;
+-- Hiển thị môn học có credit lớn nhất
+select * 
+from subject
+where credit = (select max(credit) from subject);
+select s.id_subject, s.name_subject, s.credit, m.score
+from subject s
+join mark m on s.id_subject = m.id_subject
+where m.score = (select max(score) from mark);
+select 
+    st.name,
+    round(avg(m.score), 2) as diem_trung_binh
+from students st
+join mark m on st.id_students = m.id_students
+group by st.name
+order by diem_trung_binh desc;
 
 
 

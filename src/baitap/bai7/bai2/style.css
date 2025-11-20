@@ -1,0 +1,125 @@
+/* Reset cơ bản */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    background: #f5f5f5;
+}
+
+/* ================= HEADER ================= */
+.header {
+    background: #fff;
+    border-bottom: 1px solid #ddd;
+    padding: 10px 20px;
+    display: flex;
+    align-items: center;
+}
+
+.header img {
+    height: 45px;
+}
+
+.menu {
+    margin-left: 40px;
+}
+
+.menu a {
+    text-decoration: none;
+    color: #333;
+    padding: 0 10px;
+}
+
+.menu span {
+    color: gray;
+}
+
+/* ================= GRID ================= */
+.row {
+    display: flex;
+    flex-wrap: wrap; /* Tự động xuống dòng */
+}
+
+[class*="col-"] {
+    padding: 7px;
+}
+
+/* Mobile */
+@media (max-width:740px){
+    .col-s-12 {width: 100%;}
+    .col-s-6  {width: 50%;}
+    .col-s-4  {width: 33.33%;}
+    .col-s-3  {width: 25%;}
+}
+
+/* Tablet */
+@media (min-width:741px) and (max-width:1240px){
+    .col-m-12 {width: 100%;}
+    .col-m-6  {width: 50%;}
+    .col-m-4  {width: 33.33%;}
+    .col-m-3  {width: 25%;}
+}
+
+/* PC */
+@media (min-width:1241px){
+    .col-l-12 {width: 100%;}
+    .col-l-6  {width: 50%;}
+    .col-l-4  {width: 33.33%;}
+    .col-l-3  {width: 25%;}
+}
+
+/* ================= LAYOUT ================= */
+.container {
+    width: 95%;
+    margin: 20px auto;
+}
+
+/* Sidebar: card tin tức */
+.sidebar .card {
+    background: #fff;
+    border: 1px solid #ddd;
+    margin-bottom: 15px;
+}
+
+.sidebar img {
+    width: 100%;
+    height: 150px;
+    object-fit: cover;
+}
+
+.sidebar h4,
+.sidebar p {
+    padding: 10px;
+}
+
+.sidebar p {
+    font-size: 14px;
+    color: #555;
+}
+
+/* Nội dung chính */
+.content-box {
+    background: #fff;
+    border: 1px solid #ddd;
+    padding: 15px;
+}
+
+.content-box h2,
+.content-box h4 {
+    margin: 10px 0;
+}
+
+.content-box p {
+    margin-bottom: 12px;
+    line-height: 1.5;
+}
+
+/* Video */
+.video iframe {
+    width: 100%;
+    height: 350px;
+    border: none;
+}

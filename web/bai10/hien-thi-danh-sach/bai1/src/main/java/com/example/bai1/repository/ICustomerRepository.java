@@ -1,9 +1,9 @@
 package com.example.bai1.repository;
 
-import com.example.bai1.entity.Student;
+import com.example.bai1.entity.Customer;
 
 import java.util.List;
 
-public interface IStudentRepository {
-    List<Student> findAll();
+public interface ICustomerRepository {
+    List<Customer> findAll();
 }

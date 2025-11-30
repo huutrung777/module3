@@ -1,19 +1,20 @@
 package com.example.bai1.entity;
 
-public class Student {
+public class Customer {
     private int id;
     private String name;
-    private String address;
-    private  score;
+    private String date;
 
-    public Student() {
+    private String address;
+
+    public Customer() {
     }
 
-    public Student(int id, String name, boolean gender, float score) {
+    public Customer(int id, String name, String date, String address) {
         this.id = id;
         this.name = name;
-        this.gender = gender;
-        this.score = score;
+        this.date = date;
+        this.address = address;
     }
 
     public int getId() {
@@ -32,19 +33,19 @@ public class Student {
         this.name = name;
     }
 
-    public boolean isGender() {
-        return gender;
+    public String getDate() {
+        return date;
     }
 
-    public void setGender(boolean gender) {
-        this.gender = gender;
+    public void setDate(String date) {
+        this.date = date;
     }
 
-    public float getScore() {
-        return score;
+    public String getAddress() {
+        return address;
     }
 
-    public void setScore(float score) {
-        this.score = score;
+    public void setAddress(String address) {
+        this.address = address;
     }
 }

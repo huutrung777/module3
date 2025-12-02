@@ -9,6 +9,7 @@
 <html>
 <head>
     <title>Title</title>
+    <c:import url="./layout/library.jsp"/>
 </head>
 <body>
 <form action="/students?action=update" method="post">

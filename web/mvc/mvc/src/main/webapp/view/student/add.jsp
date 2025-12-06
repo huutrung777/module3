@@ -3,63 +3,107 @@
 
 <html>
 <head>
-  <title>Add Student</title>
+  <title>Title</title>
   <c:import url="../layout/library.jsp"/>
 </head>
-<body class="bg-light">
+<body>
 <c:import url="../layout/navbar.jsp"/>
+<%--<h1>Thông tin thêm mới</h1>--%>
+<%--<form action="/students?action=add" method="post">--%>
+<%--    Name : <input onchange="checkValidate()" id="name" name="name"><br>--%>
+<%--    <small id="errorName" class="text-danger"></small>--%>
+<%--    Gender : <input type="radio" checked value="true" name="gender">Male--%>
+<%--    <input type="radio" value="false" name="gender">Female<br>--%>
+<%--    Score:<input onchange="checkValidate()" id="score" value="0" name="score"><br>--%>
+<%--    <small id="errorScore" class="text-danger"></small>--%>
+<%--    <button id="btn-save" disabled >Save</button>--%>
+<%--</form>--%>
 
-<div class="container mt-4">
+<div class="container mt-5" style="max-width: 600px;">
+  <h1 class="text-center mb-4">Thông tin thêm mới</h1>
 
-  <div class="card shadow-sm">
-    <div class="card-header bg-primary text-white">
-      <h3 class="mb-0">Thông tin thêm mới</h3>
+  <form action="/students?action=add" method="post" class="p-4 border rounded shadow-sm bg-white">
+
+    <!-- Name -->
+    <div class="mb-3">
+      <label for="name" class="form-label fw-bold">Name</label>
+      <input type="text" class="form-control" id="name" name="name" onchange="checkValidate()">
+      <small id="errorName" class="text-danger"></small>
     </div>
 
-    <div class="card-body">
+    <!-- Gender -->
+    <div class="mb-3">
+      <label class="form-label fw-bold d-block">Gender</label>
 
-      <form action="/students?action=add" method="post">
+      <div class="form-check form-check-inline">
+        <input class="form-check-input" checked type="radio" name="gender" id="male" value="true">
+        <label class="form-check-label" for="male">Male</label>
+      </div>
 
-        <!-- ID -->
-        <div class="mb-3">
-          <label class="form-label">ID</label>
-          <input type="number" name="id" class="form-control" required>
-        </div>
-
-        <!-- Name -->
-        <div class="mb-3">
-          <label class="form-label">Name</label>
-          <input name="name" class="form-control" required>
-        </div>
-
-        <!-- Gender -->
-        <div class="mb-3">
-          <label class="form-label">Gender</label><br>
-          <div class="form-check form-check-inline">
-            <input type="radio" value="true" name="gender" class="form-check-input" id="male">
-            <label class="form-check-label" for="male">Male</label>
-          </div>
-
-          <div class="form-check form-check-inline">
-            <input type="radio" value="false" name="gender" class="form-check-input" id="female">
-            <label class="form-check-label" for="female">Female</label>
-          </div>
-        </div>
-
-        <!-- Score -->
-        <div class="mb-3">
-          <label class="form-label">Score</label>
-          <input type="number" value="0" name="score" class="form-control">
-        </div>
-
-        <button class="btn btn-success">Save</button>
-
-      </form>
-
+      <div class="form-check form-check-inline">
+        <input class="form-check-input" type="radio" name="gender" id="female" value="false">
+        <label class="form-check-label" for="female">Female</label>
+      </div>
     </div>
-  </div>
 
+    <!-- Score -->
+    <div class="mb-3">
+      <label for="score" class="form-label fw-bold">Score</label>
+      <input type="number" class="form-control" id="score" name="score" value="0" onchange="checkValidate()">
+      <small id="errorScore" class="text-danger"></small>
+    </div>
+
+    <!-- Save button -->
+    <button id="btn-save" class="btn btn-primary w-100" disabled>Save</button>
+  </form>
 </div>
+<script>
+  function checkValidate(){
+    let name = document.getElementById("name").value.trim();
+    let score = document.getElementById("score").value.trim();
+
+    let nameRegex = /^[A-ZÀ-Ỹ][a-zA-ZÀ-ỹ]*(\s[A-ZÀ-Ỹ][a-zA-ZÀ-ỹ]*)+$/;
+    let scoreRegex = /^\d+(\.\d)?$/;
+
+    let isNameOK = false;
+    let isScore = false;
+
+    // ======== CHECK NAME =========
+    if (name === "") {
+      document.getElementById("errorName").innerHTML = "Tên không được để trống";
+      isNameOK = false;
+
+    } else if (!nameRegex.test(name)) {
+      document.getElementById("errorName").innerHTML = "Tên không đúng định dạng";
+      isNameOK = false;
+
+    } else {
+      document.getElementById("errorName").innerHTML = "";
+      isNameOK = true;
+    }
+
+    // ======== CHECK SCORE =========
+    if (score === "") {
+      document.getElementById("errorScore").innerHTML = "Điểm không được để trống!";
+      isScore = false;
+
+    } else if (!scoreRegex.test(score)) {
+      document.getElementById("errorScore").innerHTML = "Điểm không đúng định dạng!";
+      isScore = false;
+
+    } else if (parseFloat(score) > 10) {
+      document.getElementById("errorScore").innerHTML = "Điểm phải nhỏ hơn hoặc bằng 10!";
+      isScore = false;
+
+    } else {
+      document.getElementById("errorScore").innerHTML = "";
+      isScore = true;
+    }
+
+    // ======== ENABLE BUTTON =========
+    document.getElementById("btn-save").disabled = !(isNameOK && isScore);
+  }
+</script>
 
 </body>
 </html>

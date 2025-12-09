@@ -24,7 +24,7 @@ public class SanPhamService implements ISanPhamService {
     }
 
     @Override
-    public SanPham findByName(String tenSanPham) {
+    public List<SanPham> findByName(String tenSanPham) {
         return khachHangRepository.findByName(tenSanPham);
     }
 

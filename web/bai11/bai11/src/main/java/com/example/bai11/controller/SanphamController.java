@@ -12,6 +12,7 @@ import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
+import java.util.ArrayList;
 import java.util.List;
 
 @WebServlet(name = "SanphamController",value = "/sanphams")
@@ -44,27 +45,26 @@ public class SanphamController extends HttpServlet {
     }
 
     private void findByName(HttpServletRequest req, HttpServletResponse resp) {
-        String tenSanPham = (req.getParameter("tenSanPham"));
+        String tenSanPham = req.getParameter("tenSanPham");
 
-        SanPham sanPham = sanphamService.findByName(tenSanPham);
+        List<SanPham> sanPhamList = sanphamService.findByName(tenSanPham);
 
-        if (sanPham != null) {
-            req.setAttribute("sanPhamList", java.util.List.of(sanPham));
+        if (sanPhamList != null && !sanPhamList.isEmpty()) {
+            req.setAttribute("sanPhamList", sanPhamList);
             req.setAttribute("mess", "Tìm thấy tên: " + tenSanPham);
         } else {
-            req.setAttribute("studentList", java.util.List.of());
+            req.setAttribute("sanPhamList", new ArrayList<>());
             req.setAttribute("mess", "Không tìm thấy tên: " + tenSanPham);
         }
 
         try {
-            req.getRequestDispatcher("/view/sanpham/list.jsp").forward(req, resp);
-        } catch (ServletException e) {
-            throw new RuntimeException(e);
-        } catch (IOException e) {
+            req.getRequestDispatcher("/view/sanpham/list.jsp")
+                    .forward(req, resp);
+        } catch (Exception e) {
             throw new RuntimeException(e);
         }
-
     }
+
 
     private void showForAdd(HttpServletRequest req, HttpServletResponse resp) {
         try {

@@ -23,8 +23,6 @@
            placeholder="Nhập ID cần tìm" style="width:200px;display:inline-block;">
     <button class="btn btn-primary btn-sm">Search</button>
 </form>
-
-
 <table class="table table-dark table-striped">
     <tr>
         <th>STT</th>

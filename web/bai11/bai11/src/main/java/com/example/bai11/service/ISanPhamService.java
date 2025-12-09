@@ -8,7 +8,7 @@ public interface ISanPhamService {
     List<SanPham> findAll();
     boolean add(SanPham sanPham);
     boolean deleteById(int id);
-    SanPham findByName(String tenSanPham);
+    List<SanPham> findByName(String tenSanPham);
     boolean update(SanPham sanPham);
 
     SanPham findById(int id);

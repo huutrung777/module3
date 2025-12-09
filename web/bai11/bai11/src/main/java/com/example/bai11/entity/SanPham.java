@@ -18,6 +18,13 @@ public class SanPham {
         this.nhaSanXuat = nhaSanXuat;
     }
 
+    public SanPham(String tenSanPham, double gia, String moTa, String nhaSanXuat) {
+        this.tenSanPham = tenSanPham;
+        this.gia = gia;
+        this.moTa = moTa;
+        this.nhaSanXuat = nhaSanXuat;
+    }
+
     public int getId() {
         return id;
     }
